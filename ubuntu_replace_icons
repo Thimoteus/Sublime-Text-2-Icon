@@ -23,7 +23,7 @@ fi
 # The directory this script is running in
 THIS_DIR="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-echo "Creating Sublime Text 2 icon set for Ubuntu"
+echo "Creating Sublime Text 3 icon set for Ubuntu"
 # Convert icons and move into folders
 TEMP_ICONS="$THIS_DIR/TEMP/Icon"
 mkdir -p -m755 $TEMP_ICONS
@@ -32,10 +32,10 @@ mkdir -p -m755 $TEMP_ICONS
 for SIZE in 256 128 48 32 16
 do
     mkdir "$TEMP_ICONS/${SIZE}x${SIZE}"
-    convert -resize "${SIZE}X${SIZE}" "${THIS_DIR}/st2_icon_512.png" "${TEMP_ICONS}/${SIZE}x${SIZE}/sublime_text.png"
+    convert -resize "${SIZE}X${SIZE}" "${THIS_DIR}/st3_icon_512.png" "${TEMP_ICONS}/${SIZE}x${SIZE}/sublime-text.png"
 done
 
-echo "Updating Sublime Text 2 icons"
+echo "Updating Sublime Text 3 icons"
 
 # Update theme icons
 ICON_THEME_NAME=$(gconftool-2 -g /desktop/gnome/interface/icon_theme)
@@ -50,21 +50,19 @@ do
     do
         ICON_SIZE_DIRECTORY="${ICON_DIRECTORY}/${SIZE}x${SIZE}/apps/"
         if [ -d "$ICON_SIZE_DIRECTORY" ]; then
-            cp -f "${TEMP_ICONS}/${SIZE}x${SIZE}/sublime_text.png" "${ICON_SIZE_DIRECTORY}/sublime-text-2.png"
+            cp -f "${TEMP_ICONS}/${SIZE}x${SIZE}/sublime-text.png" "${ICON_SIZE_DIRECTORY}/sublime-text.png"
         fi
     done
 done
 
 # Replace default Sublime Text 2 icons
-SUBLIME_ICONS="/usr/lib/sublime-text-2/Icon/"
-SUBLIME_CACHE_ICONS="/var/cache/sublime-text-2/Sublime Text 2/Icon/"
+SUBLIME_ICONS="/opt/sublime_text/Icon/"
 
 # Remove existing icons
-rm -rf $SUBLIME_ICONS $SUBLIME_CACHE_ICONS
+rm -rf $SUBLIME_ICONS
 
 # Move new icons into place
 cp -rp $TEMP_ICONS $SUBLIME_ICONS
-cp -rp $TEMP_ICONS "$SUBLIME_CACHE_ICONS"
 
 # Remove temporary icon directory
 rm -rf $TEMP_ICONS
