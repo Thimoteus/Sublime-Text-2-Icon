@@ -1,4 +1,4 @@
-Sublime Text 2 Replacement Icon
+Sublime Text 3 Replacement Icon
 =============
 A replacement icon for [Sublime Text 3](http://sublimetext.com/3)
 

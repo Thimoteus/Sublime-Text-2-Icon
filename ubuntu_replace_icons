@@ -1,9 +1,11 @@
 #!/bin/bash
 ##
-## Replace Sublime Text 2 icons in Ubuntu with the much improved https://github.com/dmatarazzo/Sublime-Text-2-Icon version.
+## Replace Sublime Text 3 icons in Ubuntu with the much improved https://github.com/Thimoteus/Sublime-Text-3-Icon version.
 ##
 ## Script by Michael Robinson <mike@pagesofinterest.net>
 ## http://pagesofinterest.net
+## adapted for Sublime Text 3 by Thimoteus
+## https://github.com/Thimoteus
 ##
 
 if [ "$(whoami)" != "root" ]; then
